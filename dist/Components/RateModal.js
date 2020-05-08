@@ -107,7 +107,15 @@ class RateModal extends react_1.Component {
                 react_native_1.Linking.openURL(playStoreUrl);
         }
         else {
-            this.setState({ showContactForm: true });
+            // アプリ内でのコメント入力させないようにした
+            // --- update start ---
+            // this.setState({ showContactForm: true });
+            const { sendContactUsForm } = this.props;
+            if (sendContactUsForm && typeof sendContactUsForm === 'function') {
+                return sendContactUsForm({ ...this.state });
+            }
+            this.setState({ isModalOpen: false });
+            // --- update end ---
         }
     }
     sendContactUsForm() {
