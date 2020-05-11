@@ -114,9 +114,10 @@ class RateModal extends react_1.Component {
             if (sendContactUsForm && typeof sendContactUsForm === 'function') {
                 return sendContactUsForm({ ...this.state });
             }
-            this.setState({ isModalOpen: false });
             // --- update end ---
         }
+        // モーダルを非表示
+        this.setState({ isModalOpen: false });
     }
     sendContactUsForm() {
         const { sendContactUsForm } = this.props;
